@@ -1,0 +1,34 @@
+{
+  "name": "assets-manager-server",
+  "version": "1.0.0",
+  "description": "assets manager server",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon ./src/app.js",
+    "jest": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://haydenbang@github.com/150gm/assets-manager-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/150gm/assets-manager-server/issues"
+  },
+  "homepage": "https://github.com/150gm/assets-manager-server#readme",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11"
+  }
+}
