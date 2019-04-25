@@ -1,4 +1,4 @@
-const handler = require('../handlers/handlers');
+const routehandler = require('../handlers/routehandler');
 const Joi = require("joi");
 
 exports.baseroutes = [
@@ -8,9 +8,11 @@ exports.baseroutes = [
         options: {
             validate: {
                 payload: {
+                    type: Joi.string().min(3).required(),
                     name: Joi.string().min(3).required(),
-                    type: Joi.string().min(5).required(),
-                    serial: Joi.string().min(5).required(),
+                    project: Joi.string().min(3).required(),
+                    serialNo: Joi.string().min(5).required(),
+                    user: Joi.string().min(3).required(),
                 },
                 failAction: (request, h, error) => {
                     return error.isJoi ?
@@ -19,26 +21,29 @@ exports.baseroutes = [
                 },
             }
         },
-        handler: handler.postAssets,
+        handler: routehandler.postAssets,
     },
     {
         method: 'GET',
         path: '/api/v1/assets',
-        handler: handler.getAllAssets,
+        handler: routehandler.getAllAssets,
     },
     {
         method: 'GET',
         path: '/api/v1/assets/{id}',
-        handler: handler.getAssetsById,
+        handler: routehandler.getAssetsById,
     },
     {
         method: 'PUT',
         options: {
             validate: {
                 payload: {
-                    name: Joi.string().optional(),
                     type: Joi.string().optional(),
-                    serial: Joi.string().optional(),
+                    name: Joi.string().optional(),
+                    project: Joi.string().optional(),
+                    serialNo: Joi.string().optional(),
+                    user: Joi.string().optional(),
+                    checkDate: Joi.date().optional(),
                 },
                 failAction: (request, h, error) => {
                     return error.isJoi ?
@@ -48,12 +53,12 @@ exports.baseroutes = [
             }
         },
         path: '/api/v1/assets/{id}',
-        handler: handler.getAssetsById,
+        handler: routehandler.putAssetsById,
     },
     {
         method: 'DELETE',
         path: '/api/v1/assets/{id}',
-        handler: handler.getAssetsById,
+        handler: routehandler.deleteAssetsById,
     },
 
 ];
